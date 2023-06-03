@@ -1,0 +1,97 @@
+﻿@model MVC_GemiLimanTakip5.Models.Entity.Gemiler
+@{
+    ViewBag.Title = "YeniGemi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div>
+
+        <label>ID</label>
+        @Html.TextBoxFor(m => m.ID, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ID, "", new { @style = "color:red" })
+
+    </div>
+    <div>
+
+        <label>ID</label>
+        @Html.TextBoxFor(m => m.LimanID, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LimanID, "", new { @style = "color:red" })
+
+    </div>
+    <div>
+
+        <label>ID</label>
+        @Html.TextBoxFor(m => m.SirketID, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.SirketID, "", new { @style = "color:red" })
+
+    </div>
+
+
+    <div>
+
+        <label>Yük</label>
+        @Html.TextBoxFor(m => m.Yuk, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Yuk, "", new { @style = "color:red" })
+
+    </div>
+    <div>
+
+        <label>Yük Tonu</label>
+        @Html.TextBoxFor(m => m.YukTonu, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.YukTonu, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <label>Tonaj</label>
+        @Html.TextBoxFor(m => m.Tonaj, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Tonaj, "", new { @style = "color:red" })
+    </div>
+    <div>
+
+        <label>Mürettebat</label>
+        @Html.TextBoxFor(m => m.Murettebat, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Murettebat, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <label>Bayrak</label>
+        @Html.TextBoxFor(m => m.Bayrak, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Bayrak, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <label>Çıkış Tarihi</label>
+        @Html.TextBoxFor(m => m.CikisTarihi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CikisTarihi, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <label>Varış Tarihi</label>
+        @Html.TextBoxFor(m => m.VarisTarihi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.VarisTarihi, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <label>Bulunduğu Liman</label>
+        @Html.TextBoxFor(m => m.BulunduguLiman, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.BulunduguLiman, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <label>Varacağı Liman</label>
+        @Html.TextBoxFor(m => m.VaracagiLiman, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.VaracagiLiman, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <label>Şirket Adı</label>
+        @Html.TextBoxFor(m => m.SirketAdi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.SirketAdi, "", new { @style = "color:red" })
+
+    </div>
+
+
+
+
+
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Gemi Ekle</button>
+    </div>
+
+</form>
+
+

@@ -1,0 +1,45 @@
+﻿@using MVC_GemiLimanTakip5.Models.Entity
+@model List<Sirketler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LimanLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Sirketler", FormMethod.Get))
+            {
+<p>
+    <b>Aranacak Şirket Adı:</b>  @Html.TextBox("p")
+    <input type="submit" value="Ara" />
+</p>
+            }
+    
+
+
+
+
+
+<table  class="table table-dark">
+    
+    <tr>
+        <th>ID</th>
+        <th>Sirket</th>
+        <th>Sil</th>
+        <th>GÜNCELLE</th>
+        
+    </tr>
+    <tbody>
+        @foreach(var srkt in Model)
+            {
+        <tr>
+            <td>@srkt.ID</td>
+            <td>@srkt.Sirket</td>
+            @*<td><a href="/Sirketler/SIL/@srkt.ID" class="btn btn-danger">SİL</a></td>*@
+            <td><a href="/Sirketler/SIL/@srkt.ID" class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a></td>
+            <td><a href="/Sirketler/SirketGetir/@srkt.ID" class="btn btn-warning">GÜNCELLE</a></td>
+            
+
+        </tr>
+            }
+    </tbody>
+</table> 
+<a href="/Sirketler/YeniSirket/" class="btn btn-primary">Yeni Sirket Ekle</a>

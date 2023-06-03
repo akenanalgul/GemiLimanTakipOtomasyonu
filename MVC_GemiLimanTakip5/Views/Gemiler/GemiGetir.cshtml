@@ -1,0 +1,59 @@
+﻿@model MVC_GemiLimanTakip5.Models.Entity.Gemiler
+@{
+    ViewBag.Title = "GemiGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Gemiler", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(m => m.ID)
+    @Html.TextBoxFor(m => m.ID, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.LimanID)
+    @Html.DropDownListFor(m => m.Limanlar.ID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+    @*@Html.TextBoxFor(m => m.LimanID, new { @class = "form-control" })*@
+    <br />
+    @Html.LabelFor(m => m.SirketID)
+    @Html.DropDownListFor(m => m.Sirketler.ID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+    @*@Html.TextBoxFor(m => m.SirketID, new { @class = "form-control" })*@
+    <br />
+    @Html.LabelFor(m => m.Yuk)
+    @Html.TextBoxFor(m => m.Yuk, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.YukTonu)
+    @Html.TextBoxFor(m => m.YukTonu, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Tonaj)
+    @Html.TextBoxFor(m => m.Tonaj, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Murettebat)
+    @Html.TextBoxFor(m => m.Murettebat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Bayrak)
+    @Html.TextBoxFor(m => m.Bayrak, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.CikisTarihi)
+    @Html.TextBoxFor(m => m.CikisTarihi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.VarisTarihi)
+    @Html.TextBoxFor(m => m.VarisTarihi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.BulunduguLiman)
+    @Html.TextBoxFor(m => m.BulunduguLiman, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.VaracagiLiman)
+    @Html.TextBoxFor(m => m.VaracagiLiman, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.SirketAdi)
+    @Html.DropDownListFor(m => m.Sirketler.ID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+    @*@Html.TextBoxFor(m => m.SirketAdi, new { @class = "form-control" })*@
+
+</div>
+    <div>
+        <button class="btn btn-warning">Gemi Güncelle</button>
+    </div>
+}
+
+
+

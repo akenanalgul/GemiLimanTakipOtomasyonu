@@ -1,0 +1,48 @@
+﻿@model MVC_GemiLimanTakip5.Models.Entity.Limanlar
+@{
+    ViewBag.Title = "YeniLiman";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form-group" method="post">
+    @*<div>
+        <label>Liman Adı</label>
+        <input type="text" class="form-control" name="Liman" />
+    </div>
+    <div>
+        <label>Sehir Adı</label>
+        <input type="text" class="form-control" name="Sehir" />
+    </div>
+    <div>
+        <label>Ulke Adı</label>
+        <input type="text" class="form-control" name="Ulke" />
+    </div>*@
+    <div>
+        <label>Liman Adı</label>
+        @Html.TextBoxFor(m => m.Liman, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Liman,"",new { @style="color:red"})
+        <br />
+        
+
+        <label>Sehir Adı</label>
+        @Html.TextBoxFor(m => m.Sehir, new { @class = "form-control" })
+
+        <label>Ulke Adı</label>
+        @Html.TextBoxFor(m => m.Ulke, new { @class = "form-control" })
+        
+
+    </div>
+
+    
+    
+        <div style="margin-top:15px">
+            <button class="btn btn-info" id="btn1">Liman Ekle</button>
+        </div>
+    <script>
+        $('# btn1').click(function () {
+            alert('Liman Ekleme işlemi yapıldı...!');
+        });
+    </script>
+    
+</form>
+

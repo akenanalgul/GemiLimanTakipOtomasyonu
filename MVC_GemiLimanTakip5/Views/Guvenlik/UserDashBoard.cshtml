@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "UserDashBoard";
+    Layout = "~/Views/Shared/_LimanLayout.cshtml";
+}
+
+
+
+<fieldset>
+    <legend> Kullanıcı Paneli </legend>
+    @if (Session["Kullanici"] != null)
+    {<text>
+
+            Hoşgeldin @Session["Kullanici"].ToString()
+
+    </text>
+
+}
+</fieldset>

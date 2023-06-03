@@ -1,0 +1,42 @@
+﻿@using MVC_GemiLimanTakip5.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Limanlar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LimanLayout.cshtml";
+}
+
+
+<br />
+
+<table class="table table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Liman</th>
+        <th>Sehir</th>
+        <th>Ulke</th>
+        <th>SİL</th>
+        <th>Güncelle</th>
+        
+    </tr>
+    <tbody>
+        @foreach (var lm in Model)
+        {
+        <tr>
+            <td>@lm.ID</td>
+            <td>@lm.Liman</td>
+            <td>@lm.Sehir</td>
+            <td>@lm.Ulke</td>
+            @*<td><a href="/LIMAN/SIL/@lm.ID"class="btn btn-danger" >SİL</a></td>*@
+            <td><a href="/LIMAN/SIL/@lm.ID" class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a></td>
+            <td><a href="/LIMAN/LimanGetir/@lm.ID" class="btn btn-warning">GÜNCELLE</a></td>
+            
+        </tr>
+            }
+    </tbody>
+
+</table>
+@Html.PagedListPager((IPagedList)Model,sayfa=>Url.Action("Index",new { sayfa } ))
+
+<a href="/LIMAN/YeniLiman" class="btn btn-primary">YENİ LİMAN EKLE</a>

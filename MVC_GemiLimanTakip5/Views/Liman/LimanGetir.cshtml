@@ -1,0 +1,32 @@
+﻿@model MVC_GemiLimanTakip5.Models.Entity.Limanlar
+@{
+    ViewBag.Title = "LimanGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Liman", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ID)
+        @Html.TextBoxFor(m => m.ID, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.Liman)
+        @Html.TextBoxFor(m => m.Liman, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.Sehir)
+        @Html.TextBoxFor(m => m.Sehir, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.Ulke)
+        @Html.TextBoxFor(m => m.Ulke, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning" id="btn1">Liman Güncelle</button>
+    </div>
+    <script>
+        $('# btn1').click(function () {
+            alert('Liman Ekleme işlemi yapıldı...!');
+        });
+    </script>
+}
+
+

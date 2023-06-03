@@ -1,0 +1,22 @@
+﻿@model MVC_GemiLimanTakip5.Models.Entity.Sirketler
+@{
+    ViewBag.Title = "YeniSirket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div>
+
+        <label>Sirket Adı</label>
+        @Html.TextBoxFor(m => m.Sirket, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Sirket, "", new { @style = "color:red" })
+
+
+    </div>
+
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Şirket Ekle</button>
+    </div>
+
+</form>
+

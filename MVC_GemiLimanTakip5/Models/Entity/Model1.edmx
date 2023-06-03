@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MVC_LimanGemiTakipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kullanici" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sifre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gemiler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LimanID" Type="int" Nullable="false" />
+          <Property Name="SirketID" Type="int" Nullable="false" />
+          <Property Name="Yuk" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="YukTonu" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tonaj" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Murettebat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Bayrak" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="CikisTarihi" Type="date" Nullable="false" />
+          <Property Name="VarisTarihi" Type="date" Nullable="false" />
+          <Property Name="BulunduguLiman" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="VaracagiLiman" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="SirketAdi" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Limanlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Liman" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Sehir" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Ulke" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sirketler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sirket" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Gemiler_Limanlar">
+          <End Role="Limanlar" Type="Self.Limanlar" Multiplicity="1" />
+          <End Role="Gemiler" Type="Self.Gemiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Limanlar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Gemiler">
+              <PropertyRef Name="LimanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gemiler_Sirketler">
+          <End Role="Sirketler" Type="Self.Sirketler" Multiplicity="1" />
+          <End Role="Gemiler" Type="Self.Gemiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirketler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Gemiler">
+              <PropertyRef Name="SirketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MVC_LimanGemiTakipModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gemiler" EntityType="Self.Gemiler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Limanlar" EntityType="Self.Limanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sirketler" EntityType="Self.Sirketler" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Gemiler_Limanlar" Association="Self.FK_Gemiler_Limanlar">
+            <End Role="Limanlar" EntitySet="Limanlar" />
+            <End Role="Gemiler" EntitySet="Gemiler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gemiler_Sirketler" Association="Self.FK_Gemiler_Sirketler">
+            <End Role="Sirketler" EntitySet="Sirketler" />
+            <End Role="Gemiler" EntitySet="Gemiler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MVC_LimanGemiTakipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kullanici" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gemiler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LimanID" Type="Int32" Nullable="false" />
+          <Property Name="SirketID" Type="Int32" Nullable="false" />
+          <Property Name="Yuk" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="YukTonu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tonaj" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Murettebat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Bayrak" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CikisTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="VarisTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BulunduguLiman" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VaracagiLiman" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SirketAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Limanlar" Relationship="Self.FK_Gemiler_Limanlar" FromRole="Gemiler" ToRole="Limanlar" />
+          <NavigationProperty Name="Sirketler" Relationship="Self.FK_Gemiler_Sirketler" FromRole="Gemiler" ToRole="Sirketler" />
+        </EntityType>
+        <EntityType Name="Limanlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Liman" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sehir" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ulke" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Gemiler" Relationship="Self.FK_Gemiler_Limanlar" FromRole="Limanlar" ToRole="Gemiler" />
+        </EntityType>
+        <EntityType Name="Sirketler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sirket" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Gemiler" Relationship="Self.FK_Gemiler_Sirketler" FromRole="Sirketler" ToRole="Gemiler" />
+        </EntityType>
+        <Association Name="FK_Gemiler_Limanlar">
+          <End Role="Limanlar" Type="Self.Limanlar" Multiplicity="1" />
+          <End Role="Gemiler" Type="Self.Gemiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Limanlar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Gemiler">
+              <PropertyRef Name="LimanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gemiler_Sirketler">
+          <End Role="Sirketler" Type="Self.Sirketler" Multiplicity="1" />
+          <End Role="Gemiler" Type="Self.Gemiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirketler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Gemiler">
+              <PropertyRef Name="SirketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MVC_LimanGemiTakipEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Gemiler" EntityType="Self.Gemiler" />
+          <EntitySet Name="Limanlar" EntityType="Self.Limanlar" />
+          <EntitySet Name="Sirketler" EntityType="Self.Sirketler" />
+          <AssociationSet Name="FK_Gemiler_Limanlar" Association="Self.FK_Gemiler_Limanlar">
+            <End Role="Limanlar" EntitySet="Limanlar" />
+            <End Role="Gemiler" EntitySet="Gemiler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gemiler_Sirketler" Association="Self.FK_Gemiler_Sirketler">
+            <End Role="Sirketler" EntitySet="Sirketler" />
+            <End Role="Gemiler" EntitySet="Gemiler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MVC_LimanGemiTakipModelStoreContainer" CdmEntityContainer="MVC_LimanGemiTakipEntities1">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="MVC_LimanGemiTakipModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Kullanici" ColumnName="Kullanici" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gemiler">
+            <EntityTypeMapping TypeName="MVC_LimanGemiTakipModel.Gemiler">
+              <MappingFragment StoreEntitySet="Gemiler">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LimanID" ColumnName="LimanID" />
+                <ScalarProperty Name="SirketID" ColumnName="SirketID" />
+                <ScalarProperty Name="Yuk" ColumnName="Yuk" />
+                <ScalarProperty Name="YukTonu" ColumnName="YukTonu" />
+                <ScalarProperty Name="Tonaj" ColumnName="Tonaj" />
+                <ScalarProperty Name="Murettebat" ColumnName="Murettebat" />
+                <ScalarProperty Name="Bayrak" ColumnName="Bayrak" />
+                <ScalarProperty Name="CikisTarihi" ColumnName="CikisTarihi" />
+                <ScalarProperty Name="VarisTarihi" ColumnName="VarisTarihi" />
+                <ScalarProperty Name="BulunduguLiman" ColumnName="BulunduguLiman" />
+                <ScalarProperty Name="VaracagiLiman" ColumnName="VaracagiLiman" />
+                <ScalarProperty Name="SirketAdi" ColumnName="SirketAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Limanlar">
+            <EntityTypeMapping TypeName="MVC_LimanGemiTakipModel.Limanlar">
+              <MappingFragment StoreEntitySet="Limanlar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Liman" ColumnName="Liman" />
+                <ScalarProperty Name="Sehir" ColumnName="Sehir" />
+                <ScalarProperty Name="Ulke" ColumnName="Ulke" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sirketler">
+            <EntityTypeMapping TypeName="MVC_LimanGemiTakipModel.Sirketler">
+              <MappingFragment StoreEntitySet="Sirketler">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sirket" ColumnName="Sirket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

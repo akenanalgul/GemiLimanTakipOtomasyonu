@@ -1,0 +1,50 @@
+﻿@model MVC_GemiLimanTakip5.Models.Entity.Admin
+
+@{
+    ViewBag.Title = "GirisYap";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+    @using (Html.BeginForm("GirisYap", "Guvenlik", FormMethod.Post))
+    {<fieldset>
+
+            <legend>Kullanıcı Giriş Ekranı</legend>
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            @if (@ViewBag.Message != null)
+            {
+                <div style="border: 1px solid red">
+                    @ViewBag.Message
+                </div>
+            }
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(a => a.Kullanici)</td>
+                    <td>@Html.TextBoxFor(a => a.Kullanici)</td>
+                    <td>@Html.ValidationMessageFor(a => a.Kullanici)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(a => a.Sifre)
+                    </td>
+                    <td>
+                        @Html.PasswordFor(a => a.Sifre)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(a => a.Sifre)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+
+                        <input type="submit" value="Login" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </fieldset>
+        
+    }

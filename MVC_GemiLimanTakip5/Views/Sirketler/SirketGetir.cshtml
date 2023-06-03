@@ -1,0 +1,23 @@
+﻿@model MVC_GemiLimanTakip5.Models.Entity.Sirketler
+@{
+    ViewBag.Title = "SirketGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Sirketler", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ID)
+        @Html.TextBoxFor(m => m.ID, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.Sirket)
+        @Html.TextBoxFor(m => m.Sirket, new { @class = "form-control" })
+   
+    </div>
+    <div>
+        <button class="btn btn-warning">Sirket Güncelle</button>
+    </div>
+}
+
+
+
